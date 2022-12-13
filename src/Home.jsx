@@ -6,6 +6,7 @@ import { PostsShow } from "./PostsShow";
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 
 export function Home() {
   const [posts, setPosts] = useState([]);
@@ -34,6 +35,7 @@ export function Home() {
     <div className="container">
       <Login />
       <Signup />
+      <LogoutLink />
       <NewPost />
       <PostsIndex posts={posts} onSelectPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleHidePost}>
