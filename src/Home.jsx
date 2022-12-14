@@ -12,6 +12,7 @@ export function Home() {
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
+  // const [errors, setErrors] = useState({});
 
   const handleIndexPosts = () => {
     axios.get("http://localhost:3000/posts.json").then((response) => {
@@ -20,9 +21,36 @@ export function Home() {
     });
   };
 
+  const handleCreatePost = (params) => {
+    axios.post("http://localhost:3000/posts.json", params).then((response) => {
+      setPosts([...posts, response.data]);
+    });
+    // .catch((errors) => {
+    //   console.log(error.response.data.errors);
+    //   setErrors(error.response.data.errors);
+    // });
+  };
+
+  const handleUpdatePost = (id, params) => {
+    axios.patch("http://localhost:3000/posts/" + id + ".json", params).then((response) => {
+      console.log(response.data);
+      setIsPostsShowVisible(false);
+      setPosts(
+        posts.map((post) => {
+          if (post.id === id) {
+            return response.data;
+          } else {
+            return post;
+          }
+        })
+      );
+    });
+  };
+
   const handleShowPost = (post) => {
     setIsPostsShowVisible(true);
     setCurrentPost(post);
+    console.log(post);
   };
 
   const handleHidePost = () => {
@@ -36,10 +64,10 @@ export function Home() {
       <Login />
       <LogoutLink />
       <Signup />
-      <PostNew />
+      <PostNew onCreatePost={handleCreatePost} />
       <PostsIndex posts={posts} onSelectPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleHidePost}>
-        <PostsShow post={currentPost} />
+        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} />
       </Modal>
     </div>
   );
