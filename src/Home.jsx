@@ -21,15 +21,15 @@ export function Home() {
     });
   };
 
-  const handleCreatePost = (params) => {
-    axios.post("http://localhost:3000/posts.json", params).then((response) => {
-      setPosts([...posts, response.data]);
-    });
-    // .catch((errors) => {
-    //   console.log(error.response.data.errors);
-    //   setErrors(error.response.data.errors);
-    // });
-  };
+  // const handleCreatePost = (params) => {
+  //   axios.post("http://localhost:3000/posts.json", params).then((response) => {
+  //     setPosts([...posts, response.data]);
+  // });
+  // .catch((errors) => {
+  //   console.log(error.response.data.errors);
+  //   setErrors(error.response.data.errors);
+  // });
+  // };
 
   const handleUpdatePost = (id, params) => {
     axios.patch("http://localhost:3000/posts/" + id + ".json", params).then((response) => {
@@ -72,7 +72,7 @@ export function Home() {
       <Login />
       <LogoutLink />
       <Signup />
-      <PostNew onCreatePost={handleCreatePost} />
+      {/* <PostNew onCreatePost={handleCreatePost} /> */}
       <PostsIndex posts={posts} onSelectPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleHidePost}>
         <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost} />

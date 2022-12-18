@@ -1,45 +1,71 @@
+// import { Link } from "react-router-dom";
+
+// export function Header() {
+//   return (
+//     <div>
+//       <header>
+//         <Link to="/">Home</Link> | <Link to="/posts-index">All posts</Link> | <Link to="#posts-new">New post</Link> |
+//         <Link to="#login">Login</Link> | <Link to="/signup">Signup</Link> | <Link to="#logout">Logout</Link>
+//       </header>
+//     </div>
+//   );
+// }
+
+import { LogoutLink } from "./LogoutLink";
+import { Link } from "react-router-dom";
+
 export function Header() {
   return (
     <div>
       <header>
-        <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">
+              Readr
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/posts/new">
+                    New Post
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signup">
+                    Signup
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/logoutlink">
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
       </header>
     </div>
-    //   <nav className="navbar navbar-expand-lg bg-dark">
-    //   <div className="container-fluid">
-    //     <a className="navbar-brand" href="#">Home</a>
-    //     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    //       <span className="navbar-toggler-icon"></span>
-    //     </button>
-    //     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    //       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-    //         <li className="nav-item">
-    //           <a className="nav-link active" aria-current="page" href="#">Home</a>
-    //         </li>
-    //         <li className="nav-item">
-    //           <a className="nav-link" href="#posts-index">All posts</a>
-    //         </li>
-    //         <li className="nav-item dropdown">
-    //           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    //             Dropdown
-    //           </a>
-    //           <ul className="dropdown-menu">
-    //             <li><a className="dropdown-item" href="#">Action</a></li>
-    //             <li><a className="dropdown-item" href="#">Another action</a></li>
-    //             <li><hr className="dropdown-divider"></li>
-    //             <li><a className="dropdown-item" href="#">Something else here</a></li>
-    //           </ul>
-    //         </li>
-    //         <li className="nav-item">
-    //           <a className="nav-link disabled">Disabled</a>
-    //         </li>
-    //       </ul>
-    //       <form className="d-flex" role="search">
-    //         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    //         <button className="btn btn-outline-success" type="submit">Search</button>
-    //       </form>
-    //     </div>
-    //   </div>
-    // </nav>
   );
 }
